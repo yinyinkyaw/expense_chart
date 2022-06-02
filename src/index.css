@@ -8,6 +8,16 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: DMSans,source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+font-face{
+  font-family: DMSans;
+  src: url("public/font/DMSans-Regular.ttf");
+}
+
+*{
+  font-family: DMSans,Monospaced,monospace;
 }
