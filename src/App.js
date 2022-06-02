@@ -1,10 +1,10 @@
 import './App.css';
-import ExpressChart from "./ExpressChart";
+import ExpenseChart from "./ExpenseChart";
 
 function App() {
   return (
     <div className="main-container">
-      <ExpressChart />
+      <ExpenseChart />
     </div>
   );
 }
