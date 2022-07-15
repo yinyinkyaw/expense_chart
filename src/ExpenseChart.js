@@ -1,4 +1,3 @@
-import { color } from 'highcharts';
 import React, {useEffect, useState} from 'react';
 import { BarChart, ResponsiveContainer, Bar, XAxis, Tooltip, Cell } from 'recharts';
 import "./App.css"
@@ -29,9 +28,14 @@ const ExpressChart = () => {
     }
 
     function hoverBarChart(data, index,payload){
-        console.log("index:::",index,payload,data);
-        setCurrentIndex(1);
+        // console.log("index:::",index,payload,data);
+        // setCurrentIndex(1);
 
+    }
+
+    const hoverEachBar = (payload) =>{
+        console.log("payload::", payload)
+        setCurrentIndex(payload.day)
     }
 
     
@@ -50,11 +54,11 @@ const ExpressChart = () => {
                 <label>Spending - Last 7 days</label>
                 <div className="express-chart-weekly-spend-chart">
                     <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={ExpandData} >
-                            <Bar dataKey={"amount"} onMouseOver={()=>{hoverBarChart()}} onMouseLeave={()=>{setCurrentIndex(ExpandData.length)}} >
+                        <BarChart data={ExpandData} onMouseOver={()=>{hoverBarChart()}} onMouseLeave={()=>{setCurrentIndex(ExpandData.length)}} >
+                            <Bar dataKey={"amount"} onMouseEnter={hoverEachBar} >
                                 {
-                                    ExpandData.map((_,index)=>
-                                        <Cell cursor="pointer" fill={index === currentIndex ? "#ff9b87" :"#EC755D"} key={`cell-${index}`}  />
+                                    ExpandData.map((data,index)=>
+                                        <Cell cursor="pointer" fill={data.day === currentIndex ? "#ff9b87" :"#EC755D"} key={`cell-${index}`}  />
                                     )
                                 }
                             </Bar>
